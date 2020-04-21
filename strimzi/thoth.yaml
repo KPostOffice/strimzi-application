@@ -4,10 +4,23 @@ metadata:
   name: kpostlet
 spec:
   kafka:
-    replicas: 2
+    replicas: 3
+    listeners:
+      plain: {}
+      tls: {}
+      external:
+        type: nodeport
+        tls: false
     storage:
       type: ephemeral
+    config:
+      offsets.topic.replication.factor: 1
+      transaction.state.log.replication.factor: 1
+      transaction.state.log.min.isr: 1
   zookeeper:
     replicas: 3
     storage:
       type: ephemeral
+  entityOperator:
+    topicOperator: {}
+    userOperator: {}
