@@ -4,19 +4,10 @@ metadata:
   name: kpostlet
 spec:
   kafka:
-    version: "2.4.0"
     replicas: 2
-    listeners:
-      plain: {}
-      tls: {}
-      external:
-        type: route
     storage:
       type: ephemeral
   zookeeper:
     replicas: 3
     storage:
       type: ephemeral
-  entityOperator:
-    topicOperator: {}
-    userOperator: {}
